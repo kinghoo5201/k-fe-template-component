@@ -1,0 +1,8 @@
+{
+  "holders": [{
+    "type": "input",
+    "message": "请输入组件描述",
+    "default": "",
+    "key": "__COMPONENT__DESC"
+  }]
+}

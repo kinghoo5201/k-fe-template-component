@@ -1,0 +1,5 @@
+// Just For VScode Editor
+{
+  "extends": "./config/tsconfig.base",
+  "include": ["src/**/*", "demo/**/*"]
+}

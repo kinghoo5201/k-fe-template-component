@@ -1,0 +1,85 @@
+{
+  "name": "_IRIM_PROJECT_NAME_",
+  "version": "0.1.0",
+  "description": "_IRIM_DESCRIPTION_",
+  "repository": {
+    "type": "git",
+    "url": "_IRIM_GIT_"
+  },
+  "main": "./cjs/index.js",
+  "types": "./types/index.d.ts",
+  "scripts": {
+    "dev": "webpack serve --config ./config/webpack.dev.js",
+    "build:cjs": "./node_modules/.bin/tsc -p config/tsconfig.compile.json --outDir cjs --module CommonJS",
+    "build:esm": "./node_modules/.bin/tsc -p config/tsconfig.compile.json --outDir esm --module ES6 --target ES2019",
+    "build:copy": "node scripts/copy.js",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:copy",
+    "prebuild": "rm -rf cjs esm types",
+    "stylelint": "stylelint --fix \"src/**/*.{css,less,scss}\"",
+    "eslint": "eslint --max-warnings 10 --fix --ext .tsx,.ts ./src",
+    "lint": "npm run stylelint && npm run eslint",
+    "prepublishOnly": "npm run build"
+  },
+  "author": {
+    "name": "_IRIM_AUTHOR_",
+    "email": "_IRIM_EMAIL_"
+  },
+  "maintainers": [
+    {
+      "name": "_IRIM_AUTHOR_",
+      "email": "_IRIM_EMAIL_"
+    }
+  ],
+  "license": "BSD-3-Clause",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@commitlint/cli": "~12.0.1",
+    "@commitlint/config-conventional": "~12.0.1",
+    "@irim/cli-base": "^1.1.11",
+    "@types/classnames": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@typescript-eslint/eslint-plugin": "~4.17.0",
+    "@typescript-eslint/parser": "~4.17.0",
+    "classnames": "latest",
+    "css-loader": "~5.1.2",
+    "eslint": "~7.22.0",
+    "eslint-loader": "~4.0.2",
+    "eslint-plugin-react": "~7.22.0",
+    "html-webpack-plugin": "~5.3.1",
+    "husky": "^4.3.8",
+    "less": "^4.1.1",
+    "less-loader": "~8.0.0",
+    "node-sass": "~5.0.0",
+    "react": "latest",
+    "react-dom": "latest",
+    "sass-loader": "~11.0.1",
+    "style-loader": "~2.0.0",
+    "stylelint": "^13.12.0",
+    "stylelint-config-standard": "^21.0.0",
+    "ts-loader": "~8.0.18",
+    "typescript": "^4.2.3",
+    "webpack": "~5.25.0",
+    "webpack-cli": "~4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "peerDependencies": {
+    "classnames": "2",
+    "react": ">= 16"
+  },
+  "keywords": [
+    "_IRIM_PROJECT_NAME_",
+    "React Component"
+  ],
+  "files": [
+    "esm",
+    "cjs",
+    "types"
+  ]
+}
